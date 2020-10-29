@@ -46,7 +46,7 @@ export class ToySimulatorComponent implements OnInit {
 
   // place robot
   onSubmit(e): void {
-    console.log(e);
+    // console.log(e);
     this.commonService.changePosition(e);
   }
 
@@ -100,7 +100,7 @@ export class ToySimulatorComponent implements OnInit {
   // report current status
   report(): void {
     this.commonService.getCurrentPositions().subscribe(res => {
-      console.log('report', res);
+      // console.log('report', res);
       this.currentLocation = res;
     });
   }
@@ -124,7 +124,7 @@ export class ToySimulatorComponent implements OnInit {
   // turn Robot to left
   left(): void {
 
-    console.log(this.currentLocation.direction);
+    // console.log(this.currentLocation.direction);
     if (this.board(this.currentLocation)) {
       let direction;
       if (this.currentLocation.direction == 'North') {
@@ -147,7 +147,7 @@ export class ToySimulatorComponent implements OnInit {
   // turn Robot to left
   right(): void {
 
-    console.log(this.currentLocation.direction);
+    // console.log(this.currentLocation.direction);
     if (this.board(this.currentLocation)) {
       let direction;
       if (this.currentLocation.direction == 'North') {
