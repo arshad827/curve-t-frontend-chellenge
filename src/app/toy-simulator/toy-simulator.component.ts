@@ -58,16 +58,16 @@ export class ToySimulatorComponent implements OnInit {
         case 'North':
           if (position.y < 4) {
             position.y += 1;
-            this.commonService.changePosition(position);
-            this.form.patchValue(position)
+            this.currentLocation = position;
+            this.form.patchValue(position);
             this.report();
           } else { alert('Reached the End of the table'); }
           break;
 
         case 'South':
-          if (position.y < 4 && position.y > 0) {
+          if (position.y <= 4 && position.y > 0) {
             position.y -= 1;
-            this.commonService.changePosition(position);
+            this.currentLocation = position;
             this.form.patchValue(position);
             this.report();
           } else { alert('Reached the End of the table'); }
@@ -76,16 +76,16 @@ export class ToySimulatorComponent implements OnInit {
         case 'East':
           if (position.x < 4) {
             position.x += 1;
-            this.commonService.changePosition(position);
+            this.currentLocation = position;
             this.form.patchValue(position);
             this.report();
           } else { alert('Reached the End of the table'); }
           break;
 
         case 'West':
-          if (position.x < 4 && position.y > 0) {
+          if (position.x <= 4 && position.x > 0) {
             position.x -= 1;
-            this.commonService.changePosition(position);
+            this.currentLocation = position;
             this.form.patchValue(position);
             this.report();
           } else { alert('Reached the End of the table'); }
@@ -137,10 +137,10 @@ export class ToySimulatorComponent implements OnInit {
         direction = 'North';
       }
       this.currentLocation.direction = direction;
-
     } else {
       console.log('Mr Roboto has left the board');
     }
+    this.form.patchValue(this.currentLocation);
     this.report();
   }
 
@@ -164,6 +164,7 @@ export class ToySimulatorComponent implements OnInit {
     } else {
       console.log('Mr Roboto has left the board');
     }
+    this.form.patchValue(this.currentLocation);
     this.report();
   }
 }
